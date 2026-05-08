@@ -1,29 +1,26 @@
 import streamlit as st
 
 # إعدادات الصفحة
-st.set_page_config(page_title="المنصة الزراعية - الساحل السوري", layout="centered")
+st.set_page_config(page_title="المنصة الزراعية", layout="centered")
 
-# الواجهة الرئيسية
-st.markdown("<h1 style='text-align: center; color: #2E7D32;'>منصة العُمرانية للخدمات الزراعية</h1>", unsafe_check_html=True)
-st.markdown("<p style='text-align: center; font-weight: bold;'>بوابة الخدمات المتكاملة لمزارعي الساحل السوري</p>", unsafe_check_html=True)
+# العنوان الرئيسي
+st.title("منصة العُمرانية للخدمات الزراعية")
+st.header("بوابة المزارع في الساحل السوري")
 st.write("---")
 
 # نظام التشخيص
 st.subheader("🛠️ نظام التشخيص السريع")
-col1, col2 = st.columns(2)
 
-with col1:
-    crop_type = st.selectbox("نوع المحصول المحمي أو المكشوف:", ["بندورة", "باذنجان", "فليفلة", "حمضيات", "تبغ"])
-with col2:
-    observation = st.selectbox("العرض الملاحظ:", ["اصفرار أوراق", "ذبول مفاجئ", "بقع دقيقية", "تعفن جذور", "أعراض حشرية"])
+crop_type = st.selectbox("اختر المحصول:", ["بندورة", "باذنجان", "فليفلة", "حمضيات", "تبغ"])
+observation = st.selectbox("العرض الملاحظ:", ["اصفرار أوراق", "ذبول مفاجئ", "بقع دقيقية", "تعفن جذور", "أعراض حشرية"])
 
-if st.button("تحليل البيانات الزراعية"):
+if st.button("تحليل البيانات"):
     st.write("---")
     if crop_type == "بندورة" and observation == "بقع دقيقية":
-        st.success("التحليل التقني: الإصابة (بياض دقيقي).")
-        st.info("الإجراء المقترح: الرش بالكبريت الميكروني أو مبيد فطري تخصصي.")
+        st.success("التحليل: إصابة بالبياض الدقيقي.")
+        st.info("الإجراء: الرش بالكبريت الميكروني.")
     else:
-        st.warning("يرجى مراجعة قاعدة البيانات المركزية للمزيد من التفاصيل.")
+        st.warning("يرجى مراجعة قاعدة البيانات المركزية.")
 
 st.write("---")
-st.markdown("<p style='text-align: center; font-size: 0.8em;'>تم التطوير بواسطة: د. أحمد علي عمران</p>", unsafe_check_html=True)
+st.caption("تم التطوير بواسطة: د. أحمد علي عمران")
